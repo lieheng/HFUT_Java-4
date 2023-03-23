@@ -1,0 +1,25 @@
+mysql -u root -p
+// 登录mysql账号。
+
+create DATABASE data;
+// 创建一个名为data的数据库。
+
+use data
+// 进入data数据库。
+
+CREATE TABLE IF NOT EXISTS `userlist`(
+// 如果之前数据库中不存在表userlist，则创建表。
+ `username` varchar(20) NOT NULL DEFAULT '' PRIMARY KEY,
+// 字段username：类型为varchar，长度为20，非空，默认为空字符串，设置username为主键，保证username的唯一并且非空。
+ `password` varchar(20) NOT NULL DEFAULT '',
+// 字段password：类型为varchar，长度为20，非空，默认为空字符串。
+ `sex` varchar(2) NOT NULL DEFAULT '' CHECK(sex = '男' OR sex = '女')
+// 字段sex：类型为varchar，长度为2，非空，默认为空字符串，只能填‘男’或‘女’。
+)ENGINE = InnoDB DEFAULT CHARSET = utf8;
+// 表格编码格式为utf-8。
+
+https://tomcat.apache.org/download-80.cgi
+// Tomcat8下载地址。
+
+https://dev.mysql.com/downloads/installer/
+// MySQL下载地址。
