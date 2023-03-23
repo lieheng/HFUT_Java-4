@@ -9,7 +9,7 @@ public class UserService {
         try {
             Class.forName("org.opengauss.Driver");
             String name = "gaussdb";
-            String password = "Password@123";
+            String password = "Password@123"; // 这里要和设置的密码一致，密码必须包含大小写字母，特殊字符及数字。
             String url = "jdbc:postgresql://127.0.0.1:5432/data";
             connection = DriverManager.getConnection(url, name, password);// 建立连接到数据库的连接
             statement = connection.createStatement();// 创建一个Statement对象，用于将SQL语句发送到数据库。
@@ -52,8 +52,3 @@ public class UserService {
         }
     }
 }
-
-
-
-
-
