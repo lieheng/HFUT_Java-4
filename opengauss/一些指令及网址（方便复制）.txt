@@ -20,7 +20,7 @@ docker pull enmotech/opengauss
 // 下载enmotech/opengauss镜像。
 
 docker run --name opengauss --privileged=true -d -e GS_PASSWORD=Password@123 -p 5432:5432 enmotech/opengauss:latest
-// 创建容器。这里-name后面的opengauss是容器的名字（如果修改，那么之后那条进入容器的指令也要一并修改）；GS_PASSWORD后面的Password@123是密码，密码必须包含大小写字母，特殊字符及数字（如果修改，那么之后三处有关密码的内容也要一并修改）。后面是-p 5432:5432端口映射。
+// 创建容器。这里-name后面的opengauss是容器的名字（如果修改，那么之后那条进入容器的指令也要一并修改）；GS_PASSWORD后面的Password@123是密码，密码必须包含大小写字母，特殊字符及数字（如果修改，那么之后三处有关密码的内容也要一并修改，第三处有关密码的内容在UserService.java中）。后面是-p 5432:5432端口映射。
 
 docker exec -it opengauss bash
 // 进入opengauss容器。（如果上面设置的容器名字不是opengauss，那么这里的openguass需要改成对应的容器名字）
