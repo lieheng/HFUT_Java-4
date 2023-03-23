@@ -18,11 +18,17 @@ CREATE TABLE IF NOT EXISTS `userlist`(
 )ENGINE = InnoDB DEFAULT CHARSET = utf8;
 // 表格编码格式为utf-8。
 
+INSERT INTO userlist (username, password, sex) VALUES ('1', '1', '男');
+// 向userlist表中插入一条用户名为‘1’，密码为‘1’，性别为‘男’的数据。
+
+SELECT * FROM userlist;
+// 查看userlist表中的数据。
+
 https://tomcat.apache.org/download-80.cgi
 // Tomcat8下载地址。
 
 https://dev.mysql.com/downloads/installer/
-// MySQL下载地址。
+// mysql下载地址。
 
 https://dev.mysql.com/downloads/connector/j/
-// JDBC驱动包下载地址。
+// mysql数据库的JDBC驱动包下载地址。
