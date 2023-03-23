@@ -1,0 +1,56 @@
+wsl --install -d Ubuntu
+// 安装wsl，所用时间会比较长。
+
+https://docs.docker.com/desktop/install/windows-install/
+// docker下载地址。
+
+  "registry-mirrors": [
+    "https://registry.docker-cn.com",
+    "http://hub-mirror.c.163.com",
+    "https://docker.mirrors.ustc.edu.cn",
+    "https://cr.console.aliyun.com",
+    "https://mirror.ccs.tencentyun.com"
+ ]
+// 其他镜像网站。
+
+docker search opengauss
+// 查询docker社区中发布的安装好openGauss数据库的系统镜像。
+
+docker pull enmotech/opengauss
+// 下载enmotech/opengauss镜像。
+
+docker run --name opengauss --privileged=true -d -e GS_PASSWORD=Password@123 -p 5432:5432 enmotech/opengauss:latest
+// 创建容器。这里-name后面的opengauss是容器的名字（如果修改，那么之后那条进入容器的指令也要一并修改）；GS_PASSWORD后面的Password@123是密码，密码必须包含大小写字母，特殊字符及数字（如果修改，那么之后三处有关密码的内容也要一并修改）。后面是-p 5432:5432端口映射。
+
+docker exec -it opengauss bash
+// 进入opengauss容器。（如果上面设置的容器名字不是opengauss，那么这里的openguass需要改成对应的容器名字）
+
+su - omm
+// 切换为omm用户。
+
+gsql -d postgres -U gaussdb -W 'Password@123'
+// 进入数据库。这里-U后面的gaussdb是默认的用户名，-W后面的Password@123是刚才设置的密码。（第一处有关密码的内容）
+
+CREATE DATABASE data;
+// 创建一个名为data的数据库。
+
+\c data
+// 进入data数据库。之后会要求输入密码，密码不会显示，输入完成之后直接回车即可。（第二处有关密码的内容）
+
+CREATE TABLE IF NOT EXISTS userlist(
+// 如果之前数据库中不存在表userlist，则创建表。
+ username varchar(20) NOT NULL DEFAULT '' PRIMARY KEY,
+// 字段username：类型为varchar，长度为20，非空，默认为空字符串，设置username为主键，保证username的唯一并且非空。
+ password varchar(20) NOT NULL DEFAULT '',
+// 字段password：类型为varchar，长度为20，非空，默认为空字符串。
+ sex varchar(2) NOT NULL DEFAULT '' CHECK(sex = '男' OR sex = '女')
+// 字段sex：类型为varchar，长度为2，非空，默认为空字符串，只能填‘男’或‘女’。
+);
+// 别忘记最后一行的右小括号和分号。
+// 注：openguass中创建表的指令和mysql中创建表的指令略有不同，注意区分。
+
+INSERT INTO userlist (username, password, sex) VALUES ('1', '1', '男');
+// 向userlist表中插入一条用户名为‘1’，密码为‘1’，性别为‘男’的数据。
+
+https://opengauss.org/zh/download/
+// openguass数据库的JDBC驱动包下载地址。
