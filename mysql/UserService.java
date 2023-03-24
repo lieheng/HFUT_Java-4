@@ -10,8 +10,8 @@ public class UserService {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String name = "root";
             String password = "123456";// 这里是root账号的密码，需要与安装mysql时设置的密码一致。
-            String url = "jdbc:mysql://localhost:3306/data?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8";// 进入data数据库，如果数据库命不是data，则这里需要修改
-            connection = DriverManager.getConnection(url, name, password);// 建立连接到数据库的连接
+            String url = "jdbc:mysql://localhost:3306/data?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8";// 进入data数据库，如果数据库命不是data，则这里需要修改。
+            connection = DriverManager.getConnection(url, name, password);// 建立连接到数据库的连接。
             statement = connection.createStatement();// 创建一个Statement对象，用于将SQL语句发送到数据库。
         } catch (Exception e) {
             e.printStackTrace();
@@ -24,7 +24,7 @@ public class UserService {
                     +user.getPassword()+"', '"
                     +user.getSex()+"');";// sql语句
             if (statement.executeUpdate(sql)>=1)
-                // executeUpdate()方法会返回受影响的行数，
+                // executeUpdate()方法会返回受影响的行数。
                 // 由于username的唯一性，所以直接尝试将用户信息插入数据库，无需判断用户名是否已经存在。
                 return true;
             else
