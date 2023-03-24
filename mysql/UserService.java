@@ -9,8 +9,8 @@ public class UserService {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String name = "root";
-            String password = "123456"; // 这里是root账号的密码，需要与安装mysql时设置的密码一致。
-            String url = "jdbc:mysql://localhost:3306/data?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8";
+            String password = "123456";// 这里是root账号的密码，需要与安装mysql时设置的密码一致。
+            String url = "jdbc:mysql://localhost:3306/data?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8";// 进入data数据库，如果数据库命不是data，则这里需要修改
             connection = DriverManager.getConnection(url, name, password);// 建立连接到数据库的连接
             statement = connection.createStatement();// 创建一个Statement对象，用于将SQL语句发送到数据库。
         } catch (Exception e) {
