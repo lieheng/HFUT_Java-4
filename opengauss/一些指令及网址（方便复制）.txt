@@ -32,7 +32,7 @@ gsql -d postgres -U gaussdb -W 'Password@123'
 // 进入数据库。这里-U后面的gaussdb是默认的用户名，-W后面的Password@123是刚才设置的密码。（第一处有关密码的内容）
 
 CREATE DATABASE data;
-// 创建一个名为data的数据库。
+// 创建一个名为data的数据库。（如果这里设置的数据库名不是data，则下面那条进入数据库的语句和UserService.java中的内容需要一并修改）
 
 \c data
 // 进入data数据库。之后会要求输入密码，密码不会显示，输入完成之后直接回车即可。（第二处有关密码的内容）
