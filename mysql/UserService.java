@@ -19,7 +19,7 @@ public class UserService {
     }
     public boolean register(User user) {// 注册模块
         try{
-            String sql = "INSERT INTO userlist (username, password, sex) VALUES ('"
+            String sql = "INSERT INTO userlist (username, password, sex) VALUES ('"// sql语句，其中userlist是表名。
                     +user.getUsername()+"', '"
                     +user.getPassword()+"', '"
                     +user.getSex()+"');";// sql语句
@@ -36,7 +36,7 @@ public class UserService {
     }
     public boolean login(User user) {// 登录模块
         try {
-            String sql = "SELECT username, password FROM userlist WHERE username = '"+user.getUsername()+"';";// sql语句
+            String sql = "SELECT username, password FROM userlist WHERE username = '"+user.getUsername()+"';";// sql语句，其中userlist是表名。
             ResultSet resultSet = statement.executeQuery(sql);// 查询结果
             if (resultSet.next()// 如果查询到了该用户名
                     && user.getPassword().equals(resultSet.getString("password"))) {//并且密码与数据库中一致
