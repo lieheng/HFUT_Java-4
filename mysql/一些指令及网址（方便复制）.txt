@@ -1,3 +1,6 @@
+URIEncoding="UTF-8"
+// 修改HTTP GET方式的字符编码为UTF-8。
+
 mysql -u root -p
 // 登录mysql账号。
 
