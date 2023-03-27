@@ -52,5 +52,8 @@ CREATE TABLE IF NOT EXISTS userlist(
 INSERT INTO userlist (username, password, sex) VALUES ('1', '1', '男');
 // 向userlist表中插入一条用户名为‘1’，密码为‘1’，性别为‘男’的数据。
 
+SELECT * FROM userlist;
+// 查看userlist表中的数据。
+
 https://opengauss.org/zh/download/
 // openguass数据库的JDBC驱动包下载地址。
